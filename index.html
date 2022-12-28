@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>接口请求</title>
+  <script src="./jquery.js"></script>
+</head>
+<body>
+  <div>接口请求</div>
+  <div>
+    <button id="getreq">这是get请求</button>
+    <button id="postreq">这是post请求</button>
+    <button id="delreq">这是delete请求</button>
+  </div>
+
+  <script>
+    $(function(){
+      $('#getreq').click(function(){
+        $.ajax({
+          method: 'GET',
+          url:'http://127.0.0.1:8080/login',
+          data: {
+            username: 'zhouguowei',
+            password: '123456789'
+          },
+          success: function(msg){
+            console.log(msg);
+          }
+        })
+      })
+
+      // post请求
+      $('#postreq').click(function(){
+        $.ajax({
+          method: 'POST',
+          url:'http://127.0.0.1:8080',
+          data: {
+            name: 'zhouguowei',
+            age: 18
+          },
+          success: function(msg){
+            console.log(msg);
+          }
+        })
+      })
+
+      // delete请求，预检请求
+      $('#delreq').click(function(){
+        $.ajax({
+          method: 'DELETE',
+          url:'http://127.0.0.1:8080',
+          data: {
+            name: 'zhouguowei',
+            age: 18
+          },
+          success: function(msg){
+            console.log(msg);
+          }
+        })
+      })
+    })
+  </script>
+</body>
+</html>
